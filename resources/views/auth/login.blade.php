@@ -8,11 +8,11 @@
                     <p class="display-6 text-center">LOGIN</p>
                     <div class="mb-3">
                         <label for="email">Usuário</label>
-                        <input type="email" name="email" id="email" class="form-control" autocomplete="email">
+                        <input type="email" value="{{ old('email') }}" name="email" id="email" class="form-control" autocomplete="email" >
                     </div>
                     <div class="mb-3">
                         <label for="password">Senha</label>
-                        <input type="password" name="password" id="password" class="form-control" autocomplete="current-password">
+                        <input type="password" name="password" id="password" class="form-control" autocomplete="current-password" value="{{ old('password') }}">
                     </div>
 
                     <div class="mt-4 d-flex justify-content-between">

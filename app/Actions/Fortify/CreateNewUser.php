@@ -17,6 +17,7 @@ class CreateNewUser implements CreatesNewUsers
      * Validate and create a newly registered user.
      *
      * @param array<string, string> $input
+     * @throws ValidationException
      */
 
     public function create(array $input): User
@@ -31,11 +32,11 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
-                'password' => ['required','string','min:6','max:20','confirmed'],
+                'password' => ['required','string','min:6','confirmed'],
             ],
             [
+                'name.required' => 'O campo nome é obrigatorio',
                 'name.string' => 'O campo nome tem que ser uma string',
-                'name.min' => 'O campo nome ter :min caracteres',
                 'name.max' => 'O campo nome tem mais de :max caracteres',
                 'email.required' => 'O campo E-mail e obrigatorio',
                 'email.email' => 'O campo E-mail deve ser um email valido',
@@ -43,7 +44,8 @@ class CreateNewUser implements CreatesNewUsers
                 'password.required' => 'O campo senha e obrigatorio',
                 'password.min' => 'o campo senha tem que ter mais de :min caracteres',
                 'password.confirmed' => 'O campo senha não confere com a confirmaçao de senha',
-            ]
+            ],
+
         )->validate();
 
         return User::create([
