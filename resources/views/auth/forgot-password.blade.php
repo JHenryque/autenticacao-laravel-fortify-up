@@ -30,22 +30,22 @@
 {{--                    </div>--}}
 {{--                @endif--}}
 
-                @if($errors->any())
+                @if(session('status') || $errors->any())
                     <div class="text-center mt-5">
                         <p>Um email foi enviado para o seu endereço de email com as instruçoes para recuperar</p>
                         <a href="{{ route('login') }}" class="btn btn-primary px-5">VOLTAR</a>
                     </div>
                 @endif
 
-                @if($errors->any())
-                <div class="alert alert-danger mt-4">
-                    <ul class="m-0">
-                        @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
+{{--                @if($errors->any())--}}
+{{--                <div class="alert alert-danger mt-4">--}}
+{{--                    <ul class="m-0">--}}
+{{--                        @foreach($errors->all() as $error)--}}
+{{--                            <li>{{$error}}</li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                @endif--}}
             </div>
         </div>
     </div>
