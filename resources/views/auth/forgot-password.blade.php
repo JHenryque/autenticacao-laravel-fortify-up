@@ -3,29 +3,19 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-5 card p-5">
-                <form action="{{route('login')}}" method="post">
+                <form action="{{route('password.email')}}" method="post">
                     @csrf
-                    <p class="display-6 text-center">LOGIN</p>
+                    <p class="display-6 text-center">RECUPERAR A SENHA</p>
                     <div class="mb-3">
-                        <label for="email">Usuário</label>
-                        <input type="email" value="{{ old('email') }}" name="email" id="email" class="form-control" autocomplete="email" >
+                        <label for="email">Digite o seu endereço de email para reupera:</label>
+                        <input type="email"  name="email" id="email" class="form-control" >
                     </div>
-                    <div class="mb-3">
-                        <label for="password">Senha</label>
-                        <input type="password" name="password" id="password" class="form-control" autocomplete="current-password" value="{{ old('password') }}">
-                    </div>
-
                     <div class="mt-4 d-flex justify-content-between">
                         <div>
-                            <div>
-                                <a href="{{route('register')}}">Ainda não tem conta?</a>
-                            </div>
-                            <div>
-                                <a href="{{route('password.request')}}">esqueceu a senha?</a>
-                            </div>
+                            <a href="{{route('login')}}">voltar para o login?</a>
                         </div>
                         <div class="text-end">
-                            <button type="submit" class="btn btn-secondary px-5">LOGIN</button>
+                            <button type="submit" class="btn btn-secondary px-5">RECUPERAR SENHA</button>
                         </div>
                     </div>
                 </form>
@@ -40,6 +30,12 @@
 {{--                    </div>--}}
 {{--                @endif--}}
 
+                @if($errors->any())
+                    <div class="text-center mt-5">
+                        <p>Um email foi enviado para o seu endereço de email com as instruçoes para recuperar</p>
+                        <a href="{{ route('login') }}" class="btn btn-primary px-5">VOLTAR</a>
+                    </div>
+                @endif
 
                 @if($errors->any())
                 <div class="alert alert-danger mt-4">
